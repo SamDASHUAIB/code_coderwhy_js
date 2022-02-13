@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/underscore.js/1.13.1/underscore.js"></script> -->
+    <!-- <script src="./01_debounce-v1-基本实现.js"></script> -->
+    <!-- <script src="./02_debounce-v2-this-参数.js"></script> -->
+    <!-- <script src="./08_throttle-v3-traling实现.js"></script> -->
+    <script>
+      const inputEl = document.querySelector('input')
+      let counter = 0
+      const inputChange = function (event) {
+        console.log(`发送了低 ${++counter} 次网络请求`, `hhhh ${this}`, event) // 事件  回调的 this 就是触发此事件的元素
+      }
+      // inputEl.oninput = inputChange
+      // 防抖处理
+      // inputEl.oninput = _.debounce(inputChange, 2000, false)
+      // 节流处理
+      inputEl.oninput = debounce(inputChange, 500)
+      // inputEl.oninput = debounce(inputChange, 500)
+    </script>
+  </body>
+</html>
